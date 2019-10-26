@@ -1,0 +1,10 @@
+.body-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 5px 30px;
+    min-height: 60px;
+    border : solid red 1px;
+    margin-bottom: 10px;
+}
