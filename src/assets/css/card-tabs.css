@@ -24,6 +24,7 @@
 }
 .c-t-b-active {
     background-color: #5DADE2;
+    color: white;
 }
 .c-t-b-active:hover {
     background-color: #5DADE2;
