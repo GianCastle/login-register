@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import SmallCard from '../components/SmallCard'
 import CardTabs from '../components/CardTabs'
+import ButtonLarge from '../components/buttonLarge'
 
 const App = props => {
     // State
@@ -26,6 +27,7 @@ const App = props => {
                     ]}
                     actual={actual}
                 />
+                <ButtonLarge value={"Success"} />
             </SmallCard>
         </>
     )
