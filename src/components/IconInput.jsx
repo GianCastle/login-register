@@ -14,14 +14,18 @@ const IconInput = props => {
                 className={`i-i-input ${props.error ? 'i-i-error' : ''}`} 
                 onChange={props.change} 
                 placeholder={props.placeholder} 
+                name={props.name}
+                required={props.required}
             />
         </div>
     )
 }
 
 IconInput.propTypes = {
+    name: PropTypes.string.isRequired,
     error: PropTypes.bool,
     placeholder: PropTypes.string,
+    required: PropTypes.bool,
     icon: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     change: PropTypes.func.isRequired

@@ -1,99 +1,40 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import SmallCard from '../components/SmallCard'
 import CardTabs from '../components/CardTabs'
 import BodyCard from '../components/BodyCard'
-import IconInput from '../components/IconInput'
-import ButtonLarge from '../components/buttonLarge'
 
-import emailIcon from '../assets/img/email.svg'
-import passwordIcon from '../assets/img/locked.svg'
-import idIcon from '../assets/img/identification.svg'
-import phoneIcon from '../assets/img/telephone.svg'
+import { useTabs } from '../hooks/useTabs'
 
-const App = props => {
-    // State
-    const [actual, setActual] = useState('Login');
+//Pages
+import { Register } from '../components/Form/Register'
+import { Login } from '../components/Form/Login'
 
-    // State Login
-    const [emailLogin, setEmailLogin] = useState('');
-    const [passwordLogin, setPasswordLogin] = useState('');
+const App = () => {
 
-    // State Register
-    const [emaiRegister, setEmaiRegister] = useState('');
-    const [passwordRegister, setPasswordRegister] = useState('');
-    const [nameRegister, setNameRegiter] = useState('');
-    const [phoneRegister, setPhoneRegister] = useState('');
+    const { actual, changeActual } = useTabs('Login')
+    const pages = [
+        {
+            text: "Login",
+            action: changeActual("Login")
+        },
+        {
+            text: "Register",
+            action: changeActual("Register")
+        }
+    ]
 
-    // Events handlers
-    const changeActual = (item) => {
-        return () => setActual(item);
-    }
     return (
         <>
             <SmallCard className="mt-5">
-                <CardTabs buttons={[
-                        {
-                            text: "Login",
-                            action: changeActual("Login")
-                        }, 
-                        {
-                            text: "Register",
-                            action: changeActual("Register")
-                        }
-                    ]}
-                    actual={actual}
-                />
+                <CardTabs buttons={pages} actual={actual} />
                 <BodyCard>
                     {
-                        (actual === 'Login') ?
-                            <> 
-                                <IconInput 
-                                    placeholder="Email"
-                                    icon={emailIcon}
-                                    type="email"
-                                    change={e => setEmailLogin(e.target.value)}
-                                />
-                                <IconInput 
-                                    placeholder="Password"
-                                    icon={passwordIcon}
-                                    type="password"
-                                    change={e => setPasswordLogin(e.target.value)}
-                                />
-                            </>
-                        :
-                            (actual === 'Register') ?
-                                <>
-                                    <IconInput 
-                                        placeholder="Full name"
-                                        icon={idIcon}
-                                        type="text"
-                                        change={e => setNameRegiter(e.target.value)}
-                                    />
-                                    <IconInput 
-                                        placeholder="Email"
-                                        icon={emailIcon}
-                                        type="email"
-                                        change={e => setEmaiRegister(e.target.value)}
-                                    />
-                                    <IconInput 
-                                        placeholder="Phone number"
-                                        icon={phoneIcon}
-                                        type="phone"
-                                        change={e => setPhoneRegister(e.target.value)}
-                                    />
-                                    <IconInput 
-                                        placeholder="Password"
-                                        icon={passwordIcon}
-                                        type="password"
-                                        change={e => setPasswordRegister(e.target.value)}
-                                    />
-                                </>
-                            :
-                                null
+                        (actual === pages[0].text)
+                            ? <Login />
+                            : <Register />
                     }
                 </BodyCard>
-                <ButtonLarge value="Success!" click={() => {console.log('yep')}} />
             </SmallCard>
         </>
     )
