@@ -4,7 +4,7 @@ import '../assets/css/small-card.css'
 
 const SmallCard = props => {
     return (
-        <div className="small-card">
+        <div className={`small-card ${props.className}`}>
             {
                 props.children
             }
@@ -14,6 +14,7 @@ const SmallCard = props => {
 
 SmallCard.propTypes = {
     children: PropTypes.any.isRequired,
+    className: PropTypes.string
 }
 
 export default SmallCard

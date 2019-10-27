@@ -31,7 +31,7 @@ const App = props => {
     }
     return (
         <>
-            <SmallCard>
+            <SmallCard className="mt-5">
                 <CardTabs buttons={[
                         {
                             text: "Login",

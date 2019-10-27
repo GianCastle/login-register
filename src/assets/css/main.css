@@ -5,3 +5,10 @@
     padding: 0;
     border: 0;
 }
+#root {
+    display: flex;
+    justify-content: center;
+}
+.mt-5 {
+    margin-top: 50px;
+}
